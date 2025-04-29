@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "lexend-regular";
+}
+
+@font-face {
+    font-family: "lexend-regular";
+    src: url("Lexend/static/Lexend-Regular.ttf");
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container h2{
+    color: rgb(255, 230, 0);
+    font-size: 50px;
+}
+
+nav img{
+    justify-content: flex-end;
+}
+
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 16px;
+    color: white;
+    font-size: 20px;
+}
+
+nav a {
+    color: rgb(255, 230, 0);
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: rgb(255, 255, 255);
+    transform: scale(1.5);
+}
+
+#login {
+ cursor: pointer;
+ border: solid yellow;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+#home {
+    background-image: linear-gradient(to bottom, transparent 0%, #312b0ae8 0%), url(Imgs/estadio.png);
+    height: 40vh;
+    width: 100vw;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+
+body{
+    background-color: rgb(29, 28, 28);;
+}
+
+
+
+header {
+    height: 80px;
+    background-color: rgb(29, 28, 28);
+    align-items: center;
+    display: flex;
+    border-bottom:2px solid yellow  ;
+   
+}
+
+.container #p1 {
+    width: 100%;
+    white-space:nowrap;
+    font-size: 55px;
+    width: 50%;
+    color: yellow;
+    text-align: center;
+  
+}
+
+
+main .container{
+    text-align: center;
+    width: 50%;
+    height: 50%;
+ 
+    margin-left: 10%;
+   
+}
+
+
+
+
+
+
+
+
+
