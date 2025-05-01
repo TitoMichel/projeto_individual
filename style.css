@@ -278,12 +278,18 @@ background-color:yellow;
 }
 
 
+/* ------login */
+
 .containerLogin {
     color: white;
     display: flex;
     align-items: center;
     flex-direction: column;    
    transform: scale(1.5);
+   border: solid 2px yellow;
+   padding: 30px;
+   border-radius: 15px;
+   background-color: rgba(22, 22, 22, 0.726);
 }
 
 .containerLogin input{
@@ -296,6 +302,8 @@ background-color:yellow;
     justify-content: center;
     align-items: center;
   margin-top: 300px;
+  background-image: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/Nova-camisa-S%C3%A3o-Bernardo-FC.jpg);
+  background-size: cover;
 }
 
 .containerLogin h1{
@@ -317,8 +325,187 @@ background-color:yellow;
 
 }
 
+.containerLogin a{
+    color: yellow;
+}
 
+/* ESTILOS GERAIS */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
 
+/* CONTAINER PRINCIPAL */
+.containerCadastro {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+/* CARD DO FORMULÁRIO */
+.boxCadastro {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+/* TÍTULO */
+.tituloCadastro {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* FORMULÁRIO */
+.formCadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* GRUPO DE CAMPOS */
+.campoCadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.labelCadastro {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.inputCadastro {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.inputCadastro:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* BOTÃO */
+.botaoCadastro {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.botaoCadastro:hover {
+    background-color: #2980b9;
+}
+
+/* TEXTO NO RODAPÉ */
+.textoRodape {
+    text-align: center;
+    margin-top: 20px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.linkRodape {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.linkRodape:hover {
+    text-decoration: underline;
+}
+
+/* VALIDAÇÃO (OPCIONAL) */
+.inputCadastro:invalid {
+    border-color: #e74c3c;
+}
+
+.inputCadastro:valid {
+    border-color: #2ecc71;
+}
+
+/* ANIMAÇÕES PRINCIPAIS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* APLICA ANIMAÇÃO AO CONTAINER */
+.containerCadastro {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ANIMAÇÃO DO CARD (FORMULÁRIO) */
+.boxCadastro {
+    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: 0.2s; /* Delay para efeito cascata */
+    opacity: 0; /* Inicia invisível */
+}
+
+/* ANIMAÇÃO DOS CAMPOS DO FORMULÁRIO */
+.campoCadastro {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+/* DELAYS PROGRESSIVOS PARA OS CAMPOS */
+.campoCadastro:nth-child(1) { animation-delay: 0.4s; }
+.campoCadastro:nth-child(2) { animation-delay: 0.5s; }
+.campoCadastro:nth-child(3) { animation-delay: 0.6s; }
+.campoCadastro:nth-child(4) { animation-delay: 0.7s; }
+
+/* ANIMAÇÃO DO BOTÃO */
+.botaoCadastro {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+/* ANIMAÇÃO AO INTERAGIR */
+.inputCadastro:focus {
+    transform: scale(1.02);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.botaoCadastro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Mantenha o restante do CSS anterior aqui */
 
 
 
