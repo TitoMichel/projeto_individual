@@ -208,74 +208,96 @@ background-color:yellow;
 /* -------- ARTIGOS------- */
 
 .artigos h1{
-    color: yellow;
+    color:yellow;
     font-size: 90px;
 }
 
 .artigos H3{
-    color: white;
+    color: rgb(150, 150, 31);
     font-size: 50px;
     margin-top: -20px;
 }
 .artigos{
     height: 950px;
     text-align: center;
-    border-bottom: 2px solid yellow;
-}
-
-.produtoGeral{
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    justify-items: center;
-    gap: 20px;
-    padding: 30px;
-}
-
-
-.produto{
-    border: 2px solid yellow;
-    width: 200px;
-    height: 280px;
-    background-color: rgb(255, 255, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
+    background-color: rgb(29, 28, 28);
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    background-size: cover;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    transition: ease-in-out 0.2s all;
-
 }
+
+.sejasocio{
+    margin-top: -20px;
+    display: flex;
+    justify-items: center;
+    gap: 5px;
+    padding: 30px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.vantagens{
+    background-color: yellow;
+    width: 500px;
+    height: 100%;
+    color: black;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+
+
+
   
 
 
-.produto img{   
+.sejasocio img{   
     margin-top: 5px;
     border: solid 1px black;
-    height: 300px;
-    width: 220px;
-    border-radius: 5px;
+    height: 550px;
+    width: 400px;
+    border: solid 4px #ffff00;
+    
 }
+
+.vantagem{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: 100px;
+    background-color: black;
+    gap: 20px;
+    border-radius: 50px;
+    color: white;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    
+    }
+    
+    .vantagem img{
+    width: 70px;
+    height: 70px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 20px;
+    }
 
 .produto .descricao{
  font-size: 22px;
+ margin-top: 5px;
 }
 
-.produto:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-    border-radius: 10px;
-}
 
-.produto:not(:hover){
-    opacity: 80%;
-}
 
-.produto .descricao{
-    margin-top: 5px;
-}
+
+
 
 
 /* ------login */
@@ -329,8 +351,8 @@ background-color:yellow;
     color: yellow;
 }
 
-/* ESTILOS GERAIS */
-body {
+/* Cadastro */
+#bodyCadastro {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
     margin: 0;
@@ -340,7 +362,9 @@ body {
     align-items: center;
     min-height: 100vh;
     color: #333;
-}
+    background-image: url(https://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2023%2F0306%2Fr1140482_1296x729_16%2D9.jpg);
+    background-size: cover;
+} 
 
 /* CONTAINER PRINCIPAL */
 .containerCadastro {
@@ -351,7 +375,7 @@ body {
 
 /* CARD DO FORMULÁRIO */
 .boxCadastro {
-    background-color: #fff;
+    background-color: rgba(22, 22, 22, 0.822);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -359,7 +383,7 @@ body {
 
 /* TÍTULO */
 .tituloCadastro {
-    color: #2c3e50;
+    color: yellow;
     text-align: center;
     margin-bottom: 25px;
     font-size: 28px;
@@ -381,7 +405,7 @@ body {
 
 .labelCadastro {
     font-weight: 600;
-    color: #2c3e50;
+    color: white;
     font-size: 14px;
 }
 
@@ -394,15 +418,15 @@ body {
 }
 
 .inputCadastro:focus {
-    border-color: #3498db;
+    border-color: yellow;
     outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 /* BOTÃO */
 .botaoCadastro {
-    background-color: #3498db;
-    color: white;
+    background-color: yellow;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 14px;
     border-radius: 6px;
@@ -421,12 +445,12 @@ body {
 .textoRodape {
     text-align: center;
     margin-top: 20px;
-    color: #7f8c8d;
+    color: white;
     font-size: 14px;
 }
 
 .linkRodape {
-    color: #3498db;
+    color: yellow;
     text-decoration: none;
     font-weight: 600;
 }
@@ -437,7 +461,7 @@ body {
 
 /* VALIDAÇÃO (OPCIONAL) */
 .inputCadastro:invalid {
-    border-color: #e74c3c;
+    border-color: #be5555;
 }
 
 .inputCadastro:valid {
