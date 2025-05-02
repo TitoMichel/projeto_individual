@@ -9,12 +9,24 @@
 <body id="bodylogin">
     <div class="containerLogin">
         <h1>Login para Sócios</h1>
-        <label for="">E-mail:</label>
-        <input type="text" id="ipt_email">
-        <label for="">Senha:</label>
-        <input type="password" id="ipt_senha">
+        <form class="formLogin">
+
+            <div class="campoLogin">
+                 <label for="" class="labelLogin">E-mail:</label>
+                <input type="text" id="ipt_email">
+            </div>
+
+            <div class="campoLogin">
+                <label for="" class="labelLogin">Senha:</label>
+                <input type="password" id="ipt_senha">
+            </div>
+
+            
+       
+     
         <button onclick="logar()">Login</button> <br>
-        <h4>Não tem uma conta? <a href="cadastro.html"> Cadastrar-se  </a></h4> 
+    </form>
+        <h4 class="textoRodape">Não tem uma conta? <a class="linkRodape" href="cadastro.html"> Cadastrar-se  </a></h4> 
     </div>
 
    

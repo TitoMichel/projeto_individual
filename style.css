@@ -16,8 +16,8 @@ header .container {
 }
 
 header .container h2{
-    color: rgb(255, 230, 0);
-    font-size: 50px;
+    color: #1d1c1c;
+    font-size: 55px;
 }
 
 nav img{
@@ -29,19 +29,26 @@ nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    gap: 16px;
     color: white;
     font-size: 20px;
+    margin-right: -90px;
 }
 
 nav a {
-    color: rgb(255, 230, 0);
+    color: rgb(19, 19, 19);
     text-decoration: none;
+    font-weight: 600;
+    transition: ease-in-out 0.3s all;
+    padding: 5px;
+    
 }
 
 nav a:hover{
-    color: rgb(255, 255, 255);
-    transform: scale(1.5);
+    color: yellow;
+    transform: scale(1.9);
+    background-color: #000000;
+    border-radius: 30px;
+    padding: 8px;
 }
 
 #login {
@@ -55,19 +62,19 @@ nav a:hover{
 }
 
 #home {
-    background-image: linear-gradient(to bottom, transparent 0%, #171505e8 0%), url(Imgs/estadio.png);
+    background-image: linear-gradient(to bottom, transparent 0%, rgba(24, 24, 23, 0.808) 0%), url(Imgs/estadio.png);
     height: 40vh;
     width: 100vw;
     background-size: cover;
     display: flex;
     flex-direction: column;
    align-items: center;
-   border-bottom: 2px solid yellow;
+   border-bottom: 3px solid yellow;
    
 }
 
 body{
-    background-color: rgb(29, 28, 28);
+    background-color: #1d1c1c;
     overflow-x: hidden  ;
 }
 
@@ -76,10 +83,10 @@ body{
 
 header {
     height: 80px;
-    background-color: rgb(29, 28, 28);
+    background-color: rgb(226, 241, 8);
     align-items: center;
     display: flex;
-    border-bottom:2px solid yellow  ;
+    border-bottom:4px solid  rgb(226, 241, 8);
    
 }
 
@@ -90,6 +97,7 @@ header {
     width: 50%;
     color: yellow;
     text-align: center;
+    font-weight: 800;
   
 }
 
@@ -110,7 +118,7 @@ main .container{
     background-size: cover;
     display: flex;
     flex-direction: row;
-    border-bottom: solid 1px yellow;
+    border-bottom: solid 2px yellow;
 
 }
 
@@ -120,16 +128,24 @@ main .container{
     text-align: center;
     width: 30%;
    padding: 50px;
-   margin-top: -15px;
+   margin-top: 45px;
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .historia p{
     color: white;
-    font-size: 20px;
+    font-size: 25px;
+    width: 750px;
+    text-align: justify;
+   
 }
 
 .historia h1{
     font-size: 50px;
+    
 }
 
 /*------------------CARROSEL----------------- */
@@ -148,14 +164,14 @@ main .container{
 .slides {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: relative;
   margin-top: -20px;
   }
   
   .slide {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: relative;
     display: none;
   }
   
@@ -168,7 +184,7 @@ main .container{
   .navigation {
     width: 100%;
     height: 50px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -205,23 +221,23 @@ background-color:yellow;
 
 
 
-/* -------- ARTIGOS------- */
+/* -------- seja Socio------- */
 
 .artigos h1{
-    color:yellow;
+    color:rgb(15, 15, 15); 
     font-size: 90px;
 }
 
 .artigos H3{
-    color: rgb(150, 150, 31);
+    color: #313131;
     font-size: 50px;
     margin-top: -20px;
 }
 .artigos{
-    height: 950px;
+    height: 100vh;
     text-align: center;
     border-bottom: 2px solid rgb(0, 0, 0);
-    background-color: rgb(29, 28, 28);
+    background: yellow  ;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -240,36 +256,55 @@ background-color:yellow;
 .vantagens{
     background-color: yellow;
     width: 500px;
-    height: 100%;
+    height: 550px;
     color: black;
-    border: solid 2px black;
+    border: solid 3px rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    align-items: center;
 }
 
 
 
+.vantagens h2 {
+    color: #1d1c1c;
+    margin-top: 69px;
+    font-size: 75px;
+    text-decoration: underline;
+    }
+
+
+.vantagens h1 {
+color: black;
+margin-top:     10px;
+font-size: 70px;
+color: yellow;
+background-color: #1d1c1c;
+border-radius: 50px;
+padding: 10px;
+  
+}
 
 
   
 
 
 .sejasocio img{   
-    margin-top: 5px;
-    border: solid 1px black;
+    margin-top: 0px;
+    border: solid 1px #1d1c1c;
     height: 550px;
     width: 400px;
-    border: solid 4px #ffff00;
+    border: solid 2px #000000;
     
 }
 
 .vantagem{
     display: flex;
     flex-direction: row;
-    width: 500px;
-    height: 100px;
+    width: 450px;
+    height: 70px;
     background-color: black;
     gap: 20px;
     border-radius: 50px;
@@ -278,7 +313,15 @@ background-color:yellow;
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    
+    padding: 10px;
+    opacity: 92%;
+    transition: ease-in-out 0.4s;
+ 
+    }
+
+    .vantagem:hover{
+        transform: scale(1.05);
+        opacity: 100%;
     }
     
     .vantagem img{
@@ -288,6 +331,35 @@ background-color:yellow;
     margin-left: 10px;
     border-radius: 20px;
     }
+
+    .vantagens p {
+        font-size: 20px;
+        font-weight: 700;
+       
+    }
+
+    .vantagem p a {
+        font-weight: 900;
+        color: rgb(255, 196, 0);
+    }
+
+    .vantagem .descricaopreco{
+        margin-top: 10px;
+    }
+
+    .vantagens .tigre{
+        height: 400px;
+        width: 470px;
+       margin-top: -51px;
+        transform: scale(0.71);
+        border: none;
+
+    }
+
+    .vantagens .opcao{
+        margin-top: -50px;
+    }
+ 
 
 .produto .descricao{
  font-size: 22px;
@@ -300,18 +372,18 @@ background-color:yellow;
 
 
 
+
+
 /* ------login */
 
 .containerLogin {
-    color: white;
-    display: flex;
-    align-items: center;
-    flex-direction: column;    
-   transform: scale(1.5);
-   border: solid 2px yellow;
-   padding: 30px;
-   border-radius: 15px;
-   background-color: rgba(22, 22, 22, 0.726);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(22, 22, 22, 0.822);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
 }
 
 .containerLogin input{
@@ -330,26 +402,90 @@ background-color:yellow;
 
 .containerLogin h1{
     color: yellow;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
 }
 
 .containerLogin button{
+    background-color: yellow;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
     margin-top: 10px;
-    height: 30px;
-    width: 100px;
-    border-radius: 5px;
-    transition: ease-in-out 0.2s all;
 }
 
-.containerLogin button:hover{
-    transform: scale(1.1);
-   background-color: yellow;
-  cursor: pointer;
 
+
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ .campoLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.containerLogin a{
+.labelLogin{
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+}
+
+.campoLogin input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    width: 95%;
+}
+
+.campoLogin input:focus{
+    border-color: yellow;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);  
+}
+
+.formLogin button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(202, 219, 52, 0.3);
+    transition: all 0.5s ease;
+    background-color: #000000;
     color: yellow;
 }
+
+.containerCadastro {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ANIMAÇÃO DO CARD (FORMULÁRIO) */
+.containerLogin {
+    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: 0.2s; 
+    opacity: 0; 
+}
+
+/* ANIMAÇÃO DOS CAMPOS DO FORMULÁRIO */
+.campoLogin {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+/* DELAYS PROGRESSIVOS PARA OS CAMPOS */
+.campoLogin:nth-child(1) { animation-delay: 0.4s; }
+.campoLogin:nth-child(2) { animation-delay: 0.5s; }
+
+
 
 /* Cadastro */
 #bodyCadastro {
@@ -418,9 +554,9 @@ background-color:yellow;
 }
 
 .inputCadastro:focus {
-    border-color: yellow;
+   border-color: yellow;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);  
 }
 
 /* BOTÃO */
@@ -438,7 +574,8 @@ background-color:yellow;
 }
 
 .botaoCadastro:hover {
-    background-color: #2980b9;
+    background-color: #000000;
+    color: yellow;
 }
 
 /* TEXTO NO RODAPÉ */
@@ -459,16 +596,12 @@ background-color:yellow;
     text-decoration: underline;
 }
 
-/* VALIDAÇÃO (OPCIONAL) */
-.inputCadastro:invalid {
-    border-color: #be5555;
-}
 
-.inputCadastro:valid {
-    border-color: #2ecc71;
-}
 
-/* ANIMAÇÕES PRINCIPAIS */
+
+/* Animaçoes de entrada: (opacidade e caindo) */
+
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -485,39 +618,39 @@ background-color:yellow;
     }
 }
 
-/* APLICA ANIMAÇÃO AO CONTAINER */
+
 .containerCadastro {
     animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* ANIMAÇÃO DO CARD (FORMULÁRIO) */
+
 .boxCadastro {
     animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
     animation-delay: 0.2s; /* Delay para efeito cascata */
     opacity: 0; /* Inicia invisível */
 }
 
-/* ANIMAÇÃO DOS CAMPOS DO FORMULÁRIO */
+
 .campoCadastro {
     opacity: 0;
     transform: translateY(10px);
     animation: slideUp 0.5s ease-out forwards;
 }
 
-/* DELAYS PROGRESSIVOS PARA OS CAMPOS */
+
 .campoCadastro:nth-child(1) { animation-delay: 0.4s; }
 .campoCadastro:nth-child(2) { animation-delay: 0.5s; }
 .campoCadastro:nth-child(3) { animation-delay: 0.6s; }
 .campoCadastro:nth-child(4) { animation-delay: 0.7s; }
 
-/* ANIMAÇÃO DO BOTÃO */
+
 .botaoCadastro {
     opacity: 0;
     animation: fadeIn 0.5s ease-out forwards;
     animation-delay: 0.9s;
 }
 
-/* ANIMAÇÃO AO INTERAGIR */
+
 .inputCadastro:focus {
     transform: scale(1.02);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -525,11 +658,26 @@ background-color:yellow;
 
 .botaoCadastro:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 8px rgba(202, 219, 52, 0.3);
     transition: all 0.3s ease;
 }
 
-/* Mantenha o restante do CSS anterior aqui */
+
+footer{
+    background-color: #313131;
+    height: 50vh;
+    color: yellow;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+}
+
+footer h1{
+    font-size: 50px;
+    margin-top: 20px;
+}
+
 
 
 
