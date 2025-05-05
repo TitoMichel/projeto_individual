@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "lexend-regular";
-    src: url("Lexend/static/Lexend-Regular.ttf");
+    src: url("../Lexend/static/Lexend-Regular.ttf");
 }
 
 header .container {
@@ -62,7 +62,7 @@ nav a:hover{
 }
 
 #home {
-    background-image: linear-gradient(to bottom, transparent 0%, rgba(24, 24, 23, 0.808) 0%), url(Imgs/estadio.png);
+    background-image: linear-gradient(to bottom, transparent 0%, rgba(24, 24, 23, 0.808) 0%), url(../Imgs/estadio.png);
     height: 40vh;
     width: 100vw;
     background-size: cover;

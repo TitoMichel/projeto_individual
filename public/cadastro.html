@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/sessao.js"></script>
+
+</head>
+<body id="bodyCadastro">
+    
+    <div class="containerCadastro" id="containerCadastro">
+        <div class="boxCadastro">
+            
+            <h1 class="tituloCadastro">Crie sua conta e Seja sócio Agora mesmo!</h1>
+
+            <div class="alerta_erro" style="color: rgb(233, 73, 73);">
+                <div class="card_erro" id="cardErro">
+                  <span id="mensagem_erro"></span>
+                </div>
+            
+            
+            <form class="formCadastro" id="formCadastro">
+                
+                <div class="campoCadastro">
+                    <label for="nome_input" class="labelCadastro">Nome completo</label>
+                    <input type="text" id="nome_input" class="inputCadastro" >
+                </div>
+                
+                
+                <div class="campoCadastro">
+                    <label for="email_input" class="labelCadastro">Email</label>
+                    <input type="text" id="email_input" class="inputCadastro" >
+                </div>
+
+                <div class="campoCadastro">
+                    <label for="cpf_input" class="labelCadastro">CPF</label>
+                    <input type="text" id="cpf_input" class="inputCadastro" >
+                </div>
+                
+                
+                <div class="campoCadastro">
+                    <label for="senha_input" class="labelCadastro">Senha</label>
+                    <input type="password" id="senha_input" class="inputCadastro" >
+                </div>
+
+                
+                
+                <div class="campoCadastro">
+                    <label for="inputConfirmarSenha" class="labelCadastro">Confirmar senha</label>
+                    <input type="password" id="confirmacao_senha_input" class="inputCadastro" >
+                </div>
+                
+                
+                <button type="button" class="botaoCadastro" onclick="cadastrar()">Cadastrar</button>
+
+                <div id="div_aguardar" class="loading-div">
+                    
+                  </div>
+          
+                  <div id="div_erros_login"></div>
+
+            </form>
+            
+           
+            <p class="textoRodape">Já tem uma conta? <a href="login1.html" class="linkRodape">Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var cpfVar = cpf_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+   
+
+
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      cpfVar == "" ||
+      confirmacaoSenhaVar == "" 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+
+
+
+
+      // Validando nome
+    } else if (nomeVar.length < 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "O nome deve conter mais de uma letra ";
+      finalizarAguardar();
+      return false;
+
+        // Validando Email
+    } else if (emailVar.indexOf('@') === -1 || emailVar.indexOf('.') === -1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "O E-mail deve conter @ e .  ";
+      finalizarAguardar();
+      return false;
+
+      // Validando cpf
+    } else if ((cpfVar.length != 11 ||
+      !/^\d{11}$/.test(cpfVar))) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "O CPF DEVE CONTER SOMENTE 11 NÚMEROS  ";
+      finalizarAguardar();
+      return false;
+
+      // Validando senha
+    } else if (senhaVar.length <= 6) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "A senha deve conter mais de 6 caracter  ";
+      finalizarAguardar();
+      return false;
+
+      // Validando confirmação de senhas
+    } else if (senhaVar !== confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "As senhas devem ser iguais!  ";
+      finalizarAguardar();
+      return false;
+
+
+    }
+    else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        cpfServer: cpfVar
+        
+      }),
+    })
+      .then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login1.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
