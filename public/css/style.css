@@ -15,12 +15,12 @@ header .container {
     align-items: center;
 }
 
-header .container h2{
+header .container h2 {
     color: #1d1c1c;
     font-size: 55px;
 }
 
-nav img{
+nav img {
     justify-content: flex-end;
 }
 
@@ -40,20 +40,20 @@ nav a {
     font-weight: 600;
     transition: ease-in-out 0.3s all;
     padding: 5px;
-    
+
 }
 
-nav a:hover{
+nav a:hover {
     color: yellow;
     transform: scale(1.9);
     background-color: #000000;
     border-radius: 30px;
-    padding: 8px;
+
 }
 
 #login {
- cursor: pointer;
- border: solid yellow;
+    cursor: pointer;
+    border: solid yellow;
 }
 
 .container {
@@ -68,14 +68,14 @@ nav a:hover{
     background-size: cover;
     display: flex;
     flex-direction: column;
-   align-items: center;
-   border-bottom: 3px solid yellow;
-   
+    align-items: center;
+    border-bottom: 3px solid yellow;
+
 }
 
-body{
+body {
     background-color: #1d1c1c;
-    overflow-x: hidden  ;
+    overflow-x: hidden;
 }
 
 
@@ -86,32 +86,32 @@ header {
     background-color: rgb(226, 241, 8);
     align-items: center;
     display: flex;
-    border-bottom:4px solid  rgb(226, 241, 8);
-   
+    border-bottom: 4px solid rgb(226, 241, 8);
+
 }
 
 .container #p1 {
     width: 100%;
-    white-space:nowrap;
+    white-space: nowrap;
     font-size: 60px;
     width: 50%;
     color: yellow;
     text-align: center;
     font-weight: 800;
-  
+
 }
 
 
-main .container{
+main .container {
     text-align: center;
     width: 50%;
     height: 50%;
     margin-left: 10%;
-   
+
 }
 
 
-.historia{
+.historia {
     width: 100%;
     height: 460px;
     background-image: linear-gradient(to bottom, transparent 0%, #000000e8 0%), url(https://territoriolivrefm.com.br/wp-content/uploads/2022/08/TL_Fm_Capa-1.png);
@@ -123,40 +123,40 @@ main .container{
 }
 
 
-.historia .container{
+.historia .container {
     color: yellow;
     text-align: center;
     width: 30%;
-   padding: 50px;
-   margin-top: 45px;
-   justify-content: center;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+    padding: 50px;
+    margin-top: 45px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.historia p{
+.historia p {
     color: white;
     font-size: 25px;
     width: 750px;
     text-align: justify;
-   
+
 }
 
-.historia h1{
+.historia h1 {
     font-size: 50px;
-    
+
 }
 
 /*------------------CARROSEL----------------- */
 
-.carrosel{
+.carrosel {
     background-color: yellow;
     height: 75%;
     width: 500px;
-    margin-top: 40px;   
+    margin-top: 40px;
     margin-right: 300px;
-    border: solid 4px rgb(163, 167, 101); 
+    border: solid 4px rgb(163, 167, 101);
     position: relative;
     border-radius: 10px;
 }
@@ -165,85 +165,86 @@ main .container{
     width: 100%;
     height: 100%;
     position: relative;
-  margin-top: -20px;
-  }
-  
-  .slide {
+    margin-top: -20px;
+}
+
+.slide {
     width: 100%;
     height: 100%;
     position: relative;
     display: none;
-  }
-  
-  .slide img {
+}
+
+.slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .navigation {
+}
+
+.navigation {
     width: 100%;
     height: 50px;
     position: relative;
     bottom: 0;
     display: flex;
     justify-content: center;
-  }
-  
-  .navigation label {
+}
+
+.navigation label {
     width: 20px;
     height: 20px;
     background-color: white;
     border-radius: 50%;
     margin: 10px;
     cursor: pointer;
-  }
+}
 
 
-  #slide1:checked ~ .slides .slide:nth-child(1),
-  #slide2:checked ~ .slides .slide:nth-child(2),
-  #slide3:checked ~ .slides .slide:nth-child(3) {
+#slide1:checked~.slides .slide:nth-child(1),
+#slide2:checked~.slides .slide:nth-child(2),
+#slide3:checked~.slides .slide:nth-child(3) {
     display: block;
-  } 
+}
 
 
-  #slide1:checked ~ .navigation .selecionado:nth-child(1)  {
-background-color:yellow;
-  }
+#slide1:checked~.navigation .selecionado:nth-child(1) {
+    background-color: yellow;
+}
 
-  #slide2:checked ~ .navigation .selecionado:nth-child(2)  {
-    background-color:yellow;
-      }
+#slide2:checked~.navigation .selecionado:nth-child(2) {
+    background-color: yellow;
+}
 
-      #slide3:checked ~ .navigation .selecionado:nth-child(3)  {
-        background-color: yellow;
-          }
+#slide3:checked~.navigation .selecionado:nth-child(3) {
+    background-color: yellow;
+}
 
 
 
 /* -------- seja Socio------- */
 
-.artigos h1{
-    color:rgb(15, 15, 15); 
+.artigos h1 {
+    color: rgb(15, 15, 15);
     font-size: 90px;
 }
 
-.artigos H3{
+.artigos H3 {
     color: #313131;
     font-size: 50px;
     margin-top: -20px;
 }
-.artigos{
+
+.artigos {
     height: 100vh;
     text-align: center;
     border-bottom: 2px solid rgb(0, 0, 0);
-    background: yellow  ;
+    background: yellow;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.sejasocio{
+.sejasocio {
     margin-top: -20px;
     display: flex;
     justify-items: center;
@@ -253,7 +254,7 @@ background-color:yellow;
     justify-content: center;
 }
 
-.vantagens{
+.vantagens {
     background-color: yellow;
     width: 500px;
     height: 550px;
@@ -273,34 +274,34 @@ background-color:yellow;
     margin-top: 69px;
     font-size: 75px;
     text-decoration: underline;
-    }
-
-
-.vantagens h1 {
-color: black;
-margin-top:     10px;
-font-size: 70px;
-color: yellow;
-background-color: #1d1c1c;
-border-radius: 50px;
-padding: 10px;
-  
 }
 
 
-  
+.vantagens h1 {
+    color: black;
+    margin-top: 10px;
+    font-size: 70px;
+    color: yellow;
+    background-color: #1d1c1c;
+    border-radius: 50px;
+    padding: 10px;
+
+}
 
 
-.sejasocio img{   
+
+
+
+.sejasocio img {
     margin-top: 0px;
     border: solid 1px #1d1c1c;
     height: 550px;
     width: 400px;
     border: solid 2px #000000;
-    
+
 }
 
-.vantagem{
+.vantagem {
     display: flex;
     flex-direction: row;
     width: 450px;
@@ -316,54 +317,54 @@ padding: 10px;
     padding: 10px;
     opacity: 92%;
     transition: ease-in-out 0.4s;
- 
-    }
 
-    .vantagem:hover{
-        transform: scale(1.05);
-        opacity: 100%;
-    }
-    
-    .vantagem img{
+}
+
+.vantagem:hover {
+    transform: scale(1.05);
+    opacity: 100%;
+}
+
+.vantagem img {
     width: 70px;
     height: 70px;
     border: none;
     margin-left: 10px;
     border-radius: 20px;
-    }
+}
 
-    .vantagens p {
-        font-size: 20px;
-        font-weight: 700;
-       
-    }
+.vantagens p {
+    font-size: 20px;
+    font-weight: 700;
 
-    .vantagem p a {
-        font-weight: 900;
-        color: rgb(255, 196, 0);
-    }
+}
 
-    .vantagem .descricaopreco{
-        margin-top: 10px;
-    }
+.vantagem p a {
+    font-weight: 900;
+    color: rgb(255, 196, 0);
+}
 
-    .vantagens .tigre{
-        height: 400px;
-        width: 470px;
-       margin-top: -51px;
-        transform: scale(0.71);
-        border: none;
+.vantagem .descricaopreco {
+    margin-top: 10px;
+}
 
-    }
+.vantagens .tigre {
+    height: 400px;
+    width: 470px;
+    margin-top: -51px;
+    transform: scale(0.71);
+    border: none;
 
-    .vantagens .opcao{
-        margin-top: -50px;
-    }
- 
+}
 
-.produto .descricao{
- font-size: 22px;
- margin-top: 5px;
+.vantagens .opcao {
+    margin-top: -50px;
+}
+
+
+.produto .descricao {
+    font-size: 22px;
+    margin-top: 5px;
 }
 
 
@@ -386,28 +387,28 @@ padding: 10px;
     padding: 30px;
 }
 
-.containerLogin input{
+.containerLogin input {
     width: 300px;
     height: 20px;
 }
 
-#bodylogin{
+#bodylogin {
     display: flex;
     justify-content: center;
     align-items: center;
-  margin-top: 300px;
-  background-image: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/Nova-camisa-S%C3%A3o-Bernardo-FC.jpg);
-  background-size: cover;
+    margin-top: 300px;
+    background-image: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/Nova-camisa-S%C3%A3o-Bernardo-FC.jpg);
+    background-size: cover;
 }
 
-.containerLogin h1{
+.containerLogin h1 {
     color: yellow;
     text-align: center;
     margin-bottom: 25px;
     font-size: 28px;
 }
 
-.containerLogin button{
+.containerLogin button {
     background-color: yellow;
     color: rgb(0, 0, 0);
     border: none;
@@ -423,18 +424,19 @@ padding: 10px;
 
 
 
-.formLogin{
+.formLogin {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
- .campoLogin{
+
+.campoLogin {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.labelLogin{
+.labelLogin {
     font-weight: 600;
     color: white;
     font-size: 14px;
@@ -449,10 +451,10 @@ padding: 10px;
     width: 95%;
 }
 
-.campoLogin input:focus{
+.campoLogin input:focus {
     border-color: yellow;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);  
+    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);
 }
 
 .formLogin button:hover {
@@ -470,8 +472,8 @@ padding: 10px;
 /* ANIMAÇÃO DO CARD (FORMULÁRIO) */
 .containerLogin {
     animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    animation-delay: 0.2s; 
-    opacity: 0; 
+    animation-delay: 0.2s;
+    opacity: 0;
 }
 
 /* ANIMAÇÃO DOS CAMPOS DO FORMULÁRIO */
@@ -482,8 +484,13 @@ padding: 10px;
 }
 
 /* DELAYS PROGRESSIVOS PARA OS CAMPOS */
-.campoLogin:nth-child(1) { animation-delay: 0.4s; }
-.campoLogin:nth-child(2) { animation-delay: 0.5s; }
+.campoLogin:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.campoLogin:nth-child(2) {
+    animation-delay: 0.5s;
+}
 
 
 
@@ -500,7 +507,7 @@ padding: 10px;
     color: #333;
     background-image: url(https://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2023%2F0306%2Fr1140482_1296x729_16%2D9.jpg);
     background-size: cover;
-} 
+}
 
 /* CONTAINER PRINCIPAL */
 .containerCadastro {
@@ -554,9 +561,9 @@ padding: 10px;
 }
 
 .inputCadastro:focus {
-   border-color: yellow;
+    border-color: yellow;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);  
+    box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);
 }
 
 /* BOTÃO */
@@ -603,16 +610,22 @@ padding: 10px;
 
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
-    from { 
+    from {
         opacity: 0;
         transform: translateY(20px);
     }
-    to { 
+
+    to {
         opacity: 1;
         transform: translateY(0);
     }
@@ -626,8 +639,10 @@ padding: 10px;
 
 .boxCadastro {
     animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    animation-delay: 0.2s; /* Delay para efeito cascata */
-    opacity: 0; /* Inicia invisível */
+    animation-delay: 0.2s;
+    /* Delay para efeito cascata */
+    opacity: 0;
+    /* Inicia invisível */
 }
 
 
@@ -638,10 +653,21 @@ padding: 10px;
 }
 
 
-.campoCadastro:nth-child(1) { animation-delay: 0.4s; }
-.campoCadastro:nth-child(2) { animation-delay: 0.5s; }
-.campoCadastro:nth-child(3) { animation-delay: 0.6s; }
-.campoCadastro:nth-child(4) { animation-delay: 0.7s; }
+.campoCadastro:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.campoCadastro:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.campoCadastro:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.campoCadastro:nth-child(4) {
+    animation-delay: 0.7s;
+}
 
 
 .botaoCadastro {
@@ -663,23 +689,58 @@ padding: 10px;
 }
 
 
-footer{
+footer {
     background-color: #313131;
     height: 50vh;
     color: yellow;
     display: flex;
     text-align: center;
-    justify-content: center;
+    flex-direction: column;
 
 }
 
-footer h1{
+footer h1 {
     font-size: 50px;
     margin-top: 20px;
 }
 
+footer #email{
+    padding: 10px 20px;
+    background: #ffff00;
+    color: black;
+    text-decoration: none;
+    width: 20%;
+    margin-left: 39%;
+    transition: ease-in-out 0.2s;
+    
+}
+
+footer #email:hover{
+    background-color: #202020;
+    color: yellow;
+    transform: scale(1.05);
+}
+
+footer p {
+    margin-top: 200px;
+    transform: scale(0.65);
+}
+
+.iconeFooter{
+background-color: #202020;
+border-radius: 20px;
+text-decoration: none;
+padding: 11px;
+border: #202020 2px solid;
+transition: ease-in-out 0.3s ;
+}
+
+.iconeFooter:hover{
+transform: scale(1.07);
+border: yellow 2px solid;
+}
 
 
-
-
-
+footer a{
+    text-decoration: none;
+}
