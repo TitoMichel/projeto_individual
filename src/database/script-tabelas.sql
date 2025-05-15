@@ -16,6 +16,8 @@ email varchar(100),
 senha varchar(100),
 cpf char(11));
 
+select * from socios;
+
 CREATE TABLE jogos (
     id_jogo INT AUTO_INCREMENT PRIMARY KEY,
     adversario VARCHAR(50) NOT NULL,
@@ -85,12 +87,31 @@ CREATE TABLE confirmados (
 id_confirmacao INT AUTO_INCREMENT PRIMARY KEY,
 id_socio INT NOT NULL,
 id_jogo INT NOT NULL,
-status ENUM('Confirmado', 'Não vai', 'Pendente') DEFAULT 'Pendente',
 data_confirmacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (id_socio) REFERENCES socios(id),
 FOREIGN KEY (id_jogo) REFERENCES jogos(id_jogo),
 UNIQUE KEY (id_socio, id_jogo) 
 );
+
+use febreamarela;
+
+-- conta quantos socios existem
+select count(id) from socios;
+
+-- Jogo mais próximo
+
+create view jogo_mais_proximo as
+select *
+from jogos
+where data_jogo >= CURRENT_DATE
+order by data_jogo
+LIMIT 1;
+
+
+-- dá um insert no jogo mais próximo
+insert into confirmados (id_socio,id_jogo) values
+ (1,(select id_jogo from jogo_mais_proximo)) ;
+
 
 
 
