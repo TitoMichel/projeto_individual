@@ -112,7 +112,7 @@ main .container {
 
 
 .historia {
-    width: 100%;
+     width: 100vw;
     height: 460px;
     background-image: linear-gradient(to bottom, transparent 0%, #000000e8 0%), url(https://territoriolivrefm.com.br/wp-content/uploads/2022/08/TL_Fm_Capa-1.png);
     background-size: cover;
@@ -220,7 +220,60 @@ main .container {
 }
 
 
+.projetoTigrinho{
+    height: 100vh;
+     width: 100vw;
+    display: flex;
+    flex-direction: column;
+     background-image: linear-gradient(to bottom, transparent 0%, rgba(24, 24, 23, 0.884) 0%), url(../Imgs/criancas.png);
+     background-size: cover;
+}
 
+.projetoTigrinho h1{
+    color: yellow;
+    font-size: 85px;
+    
+}
+
+.textoTigrinho{
+    color: white;
+    width: 50%;
+    font-size: 32px;
+    text-align: justify;
+    margin-left: 80px;
+}
+
+.textoTigrinho span{
+    color: yellow;
+    font-weight: 700;
+}
+
+.tituloProjetoTigrinho{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.containerTigrinho{
+    display: flex;
+    flex-direction: row;
+    padding-inline: 50px;
+    gap: 10px;
+    margin-top: -20px;
+}
+
+.imgProjetoTigrinho{
+    background-image: url(../Imgs/ProjetoTigrinhoCrianca.jpg);
+    height: 495px;
+    width: 490px;
+    margin-left: 60px;
+    background-size: cover;
+    border: solid yellow 3px;
+    
+}
 /* -------- seja Socio------- */
 
 .artigos h1 {
@@ -239,7 +292,7 @@ main .container {
     text-align: center;
     border-bottom: 2px solid rgb(0, 0, 0);
     background: yellow;
-    width: 100%;
+     width: 100vw;
     display: flex;
     flex-direction: column;
 }
@@ -576,7 +629,7 @@ main .container {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: ease-in-out 0.3s;
     margin-top: 10px;
 }
 
@@ -585,18 +638,21 @@ main .container {
     color: yellow;
 }
 
-/* TEXTO NO RODAPÉ */
+
 .textoRodape {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
     color: white;
     font-size: 14px;
+    padding-top: 10px;
+    
 }
 
 .linkRodape {
     color: yellow;
     text-decoration: none;
     font-weight: 600;
+    
 }
 
 .linkRodape:hover {
@@ -606,7 +662,7 @@ main .container {
 
 
 
-/* Animaçoes de entrada: (opacidade e caindo) */
+/* Animaçoes de entrada: */
 
 
 @keyframes fadeIn {
@@ -691,7 +747,7 @@ main .container {
 
 footer {
     background-color: #313131;
-    height: 50vh;
+    height: 35vh;
     color: yellow;
     display: flex;
     text-align: center;
@@ -722,7 +778,7 @@ footer #email:hover{
 }
 
 footer p {
-    margin-top: 200px;
+    margin-top: 50px;
     transform: scale(0.65);
 }
 
