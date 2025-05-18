@@ -95,9 +95,7 @@ UNIQUE KEY (id_socio, id_jogo)
 
 use febreamarela;
 
- SELECT COUNT(*) as qtd
-    FROM confirmacoes c
-    WHERE c.id_socio = ? and (select id_jofo
+ 
 
 -- conta quantos socios existem
 

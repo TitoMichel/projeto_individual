@@ -313,7 +313,7 @@ margin-top: 10px;
 }
 
 .botaoConfirmar {
-    background-color: yellow;
+    background-color: rgb(116, 228, 82);
     color: black;
     border: black solid 2px;
     padding: 14px;
@@ -329,8 +329,36 @@ margin-top: 10px;
 .botaoConfirmar:hover {
     transform: scale(1.03);
     background-color: #202020;
-    color: yellow;
+    color: rgb(116, 228, 82);
     
+}
+
+.botaoCancelar{
+    background-color: rgb(211, 73, 68);
+    color: black;
+    border: black solid 2px;
+    padding: 14px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    margin-top: 10px;
+
+}
+
+.botaoCancelar:hover {
+    transform: scale(1.03);
+    background-color: #202020;
+    color: rgb(211, 73, 68);
+    
+}
+
+
+.botoesPresenca{
+display: flex;
+flex-direction: row;
+gap: 30px;
 }
 
 

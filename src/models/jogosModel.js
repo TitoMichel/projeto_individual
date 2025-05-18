@@ -29,6 +29,16 @@ function verificar(id_socio){
 
 }
 
+function cancelar(id_socio) {
+    var instrucaoSql = ` delete from confirmados
+where id_socio = ${id_socio}
+and id_jogo = (select id_jogo from jogo_mais_proximo);`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
-    proximoJogo,confirmar,verificar
+    proximoJogo,confirmar,verificar,cancelar
 }
