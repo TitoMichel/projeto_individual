@@ -95,7 +95,7 @@ UNIQUE KEY (id_socio, id_jogo)
 
 use febreamarela;
 
- 
+select * from socios;
 
 -- conta quantos socios existem
 
@@ -134,6 +134,15 @@ select * from socios;
 select * from jogos;
 
 select * from confirmados;
+
+
+
+use febreamarela;
+
+select * from jogos;
+
+-- select que verifica quantos jogos o socio foi
+select count(id_socio) from confirmados where id_socio=1 and date(data_confirmacao) < current_date();
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="../js/sessao.js"></script>
-   
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -61,21 +61,27 @@
         <div class="dash">
             <h1>Portal Transparência </h1>
             <div id="graficos">
-                <div id="contadorSocios">
-                    <h2>Total de Sócios:</h2>
-                    <span id="totalSocios">0</span>
+                <div class="kpi">
+                    <div id="contadorSocios">
+                        <h2>Total de Sócios:</h2>
+                        <span id="totalSocios">0</span>
+                    </div>
 
 
+                    <div id="contadorSocios">
+                        <h2>Você já foi em:</h2>
+                        <span id="totaljogosquefui">0 </span> <h3 class="jogosquefui">jogos</h3>
+                        
+                    </div>
                 </div>
-
 
             </div>
             <div class="containerPresenca">
                 <h2>Confirme sua presença no próximo jogo!</h2>
                 <div id="proximo_jogo"> </div>
                 <div class="botoesPresenca">
-                <button class="botaoConfirmar" onclick="confirmarPresenca()">Confirmar Presença</button>
-                <button class="botaoCancelar" onclick="cancelarPresenca()">Cancelar Presença</button> 
+                    <button class="botaoConfirmar" onclick="confirmarPresenca()">Confirmar Presença</button>
+                    <button class="botaoCancelar" onclick="cancelarPresenca()">Cancelar Presença</button>
                 </div>
                 <div id="confirmado"></div>
             </div>
@@ -114,7 +120,7 @@
     function recarregar() {
         location.reload();
     }
-    
+
 
 
     function obterDadosGrafico() {
@@ -282,7 +288,7 @@
         jogoMaisProximo();
         verificar();
         validarSessao();
-
+        jogosPorPessoa();
     };
 
 
@@ -299,7 +305,9 @@
                 document.getElementById('proximo_jogo').innerHTML = `
                 <p>Data: ${dataHora.toLocaleDateString('pt-BR')} ás ${dataHora.toLocaleTimeString('pt-BR')}</p>
                 <p>Local: ${jogo.local}</p>
-                <p>São Bernardo x ${jogo.adversario}</p>`
+                <p>São Bernardo x ${jogo.adversario}</p>
+                <p>Rodada: ${jogo.rodada}</p>
+                <p>Campeonato: ${jogo.campeonato}</p>`
             })
             .catch(erro => {
                 console.error('Erro ao buscar o Proximo Jogo:', erro);
@@ -317,7 +325,7 @@
             .then(res => {
                 if (res.ok) { // se a requisição for bem sucedida
                     document.getElementById('confirmado').innerHTML = "Presença confirmada!";
-                    document.querySelector('.botaoConfirmar').style.opacity = '0.5';
+                    document.querySelector('.botaoConfirmar').style.opacity = '0.5'; // como usei classe tenho q usar o query selector
                 } else {
                     document.getElementById('confirmado').innerHTML = "Erro ao confirmar presença.";
                 }
@@ -326,7 +334,7 @@
                 document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
             });
 
-       setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
+        setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
     }
 
     function cancelarPresenca() {
@@ -349,7 +357,7 @@
                 document.getElementById('confirmado').innerHTML = "Erro no cancelamento.";
             });
 
-       setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
+        setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
     }
 
     function verificar() {
@@ -373,11 +381,30 @@
                     document.getElementById('confirmado').innerHTML = "Presença ainda não confirmada.";
                     document.querySelector('.botaoConfirmar').disabled = false;
                     document.querySelector('.botaoCancelar').disabled = true;
-                       document.querySelector('.botaoCancelar').style.opacity = '0.5';
+                    document.querySelector('.botaoCancelar').style.opacity = '0.5';
                 }
             })
             .catch(() => {
                 document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+            });
+    }
+
+
+    function jogosPorPessoa() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/jogosPorPessoa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+            .then(response => response.json())
+            .then(dados => {
+                const total = dados.quantidade || 0;
+                document.getElementById('totaljogosquefui').textContent = total;
+            })
+            .catch(erro => {
+                console.error('Erro ao buscar total de jogos que fui:', erro);
             });
     }
 

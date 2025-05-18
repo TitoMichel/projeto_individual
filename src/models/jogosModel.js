@@ -9,6 +9,13 @@ function proximoJogo() {
 
 }
 
+function jogosPorPessoa(id_socio){
+    var instrucaoSql = `select count(id_socio) as qtd from confirmados where id_socio=${id_socio} and date(data_confirmacao) < current_date();`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function confirmar(id_socio) {
     var instrucaoSql = ` insert into confirmados (id_socio,id_jogo) values
  (${id_socio},(select id_jogo from jogo_mais_proximo));
@@ -40,5 +47,5 @@ and id_jogo = (select id_jogo from jogo_mais_proximo);`;
 }
 
 module.exports = {
-    proximoJogo,confirmar,verificar,cancelar
+    proximoJogo,confirmar,verificar,cancelar,jogosPorPessoa
 }

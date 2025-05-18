@@ -21,6 +21,11 @@ router.post("/verificar", function (req, res) {
   jogosController.verificar(req, res);
 });
 
+router.post("/jogosPorPessoa", function (req, res) {
+  jogosController.jogosPorPessoa(req, res);
+});
+
+
 
 
 

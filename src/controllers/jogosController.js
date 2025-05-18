@@ -42,8 +42,20 @@ function verificar(req, res) {
     })
 }
 
+function jogosPorPessoa(req, res) {
+    const id_socio = req.body.id_socio; // recupera o id do socio para mim conseguir inserir dps
+    
+    jogosModel.jogosPorPessoa(id_socio).then((resultado) => {
+    var quantidade = resultado[0]['qtd']; // qtd é o nome do meu alias q ta no model
+        
+        res.status(200).json({ quantidade });
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 
 module.exports = {
-    proximoJogo, confirmar, verificar,cancelar
+    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa
 }
