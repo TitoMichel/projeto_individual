@@ -95,8 +95,14 @@ UNIQUE KEY (id_socio, id_jogo)
 
 use febreamarela;
 
+ SELECT COUNT(*) as qtd
+    FROM confirmacoes c
+    WHERE c.id_socio = ? and (select id_jofo
+
 -- conta quantos socios existem
-select count(id) from socios;
+
+
+
 
 -- Jogo mais próximo
 
@@ -107,13 +113,29 @@ where data_jogo >= CURRENT_DATE
 order by data_jogo
 LIMIT 1;
 
+select * from jogo_mais_proximo;
+
 
 -- dá um insert no jogo mais próximo
 insert into confirmados (id_socio,id_jogo) values
- (1,(select id_jogo from jogo_mais_proximo)) ;
+ (1,(select id_jogo from jogo_mais_proximo));
+ 
+ 
+    select count(*) as  qtd
+    from  confirmados
+    where  id_socio = 1 and id_jogo = (SELECT id_jogo FROM jogo_mais_proximo);
+  
 
 
+-- deleta do jogo mais próximo
+delete from confirmados
+where id_socio = 1
+and id_jogo = (select id_jogo from jogo_mais_proximo);
 
+select * from socios;
+select * from jogos;
+
+select * from confirmados;
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

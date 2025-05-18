@@ -35,9 +35,8 @@
             <h1>Febre Amarela</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span></h3>
-                <h3> <span id="b_cpf">cpf</span></h3>
-
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3> &nbsp;&nbsp; <br>
+                <h3>CPF: <span id="b_cpf">cpf</span></h3>
             </div>
 
             <div class="btn-nav-white">
@@ -46,7 +45,7 @@
                 </a>
             </div>
 
-           
+
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
@@ -67,18 +66,20 @@
                     <h2>Total de Sócios:</h2>
                     <span id="totalSocios">0</span>
 
-                    
+
                 </div>
 
-               
-     </div>
-       <div class="containerPresenca">
-        <h2>Confirme sua presença no próximo jogo!</h2>
-        <h3 id="proximo_jogo"> </h3>
-        <button class="botaoConfirmar">Confirmar Presença</button>
+
             </div>
-            
-           
+            <div class="containerPresenca">
+                <h2>Confirme sua presença no próximo jogo!</h2>
+                <div id="proximo_jogo"> </div>
+                <button class="botaoConfirmar" onclick="confirmarPresenca()">Confirmar Presença</button>
+
+                <div id="confirmado"></div>
+            </div>
+
+
         </div>
     </div>
 
@@ -92,74 +93,9 @@
 
     let proximaAtualizacao;
 
-    window.onload = atualizarContadorSocios();
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
 
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
 
-            obterDadosGrafico(item.id)
-        });
-
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
-        }
-    }
-
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
-
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
-
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
-                }
-                btnAtual.classList.add("btn-white")
-            }
-        }
-
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
-    }
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -335,7 +271,78 @@
 
     window.onload = () => {
         atualizarContadorSocios();
-
+        jogoMaisProximo();
+        verificar();
+        validarSessao();
+        
     };
+
+
+    function jogoMaisProximo() {
+        fetch('/jogos/proximoJogo', { cache: 'no-store' }) // O fetch faz a requsição aqui
+            .then(response => response.json()) // converte a resposta em json
+            .then(dados => { // recebe os dados da Api
+
+
+                const jogo = dados[0];
+
+                // formatando data e hora para formato certo se não ele vem todo errado por conta do json ex: T22:00:00.000Z
+                const dataHora = new Date(jogo.data_jogo);
+                document.getElementById('proximo_jogo').innerHTML = `
+                <p>Data: ${dataHora.toLocaleDateString('pt-BR')} ás ${dataHora.toLocaleTimeString('pt-BR')}</p>
+                <p>Local: ${jogo.local}</p>
+                <p>São Bernardo x ${jogo.adversario}</p>`
+            })
+            .catch(erro => {
+                console.error('Erro ao buscar o Proximo Jogo:', erro);
+            });
+    }
+
+    function confirmarPresenca() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/confirmar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+            .then(res => {
+                if (res.ok) {
+                    document.getElementById('confirmado').innerHTML = "Presença confirmada!";
+                    ocument.querySelector('.botaoConfirmar').style.opacity = '0.5';
+                } else {
+                    document.getElementById('confirmado').innerHTML = "Erro ao confirmar presença.";
+                }
+            })
+            .catch(() => {
+                document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+            });
+    }
+
+    function verificar() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/verificar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+
+            .then(resposta => resposta.json())
+            .then(dados => {
+                  console.log('Resposta da API:', dados); // veja o que está vindo aqui
+                if (dados.quantidade > 0) {
+                    document.getElementById('confirmado').innerHTML = "Presença confirmada!";
+                    document.querySelector('.botaoConfirmar').disabled = true;
+                    document.querySelector('.botaoConfirmar').style.opacity = '0.5';
+                } else {
+                    document.getElementById('confirmado').innerHTML = "Erro ao confirmar presença.";
+                    document.querySelector('.botaoConfirmar').disabled = false;
+                }
+            })
+            .catch(() => {
+                document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+            });
+    }
 
 </script>

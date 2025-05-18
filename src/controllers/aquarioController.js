@@ -2,7 +2,7 @@ var aquarioModel = require("../models/aquarioModel");
 
 function qtdSocios(req, res) {
   aquarioModel.qtdSocios().then((resultado) => {
-    var quantidade = resultado[0]['count(id)'];
+    var quantidade = resultado[0]['count(id)']; // como n coloquei as preciso desse count id
     if (resultado.length > 0) {
       res.status(200).json({ quantidade });
     } else {
