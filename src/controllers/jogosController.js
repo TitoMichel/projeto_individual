@@ -54,8 +54,26 @@ function jogosPorPessoa(req, res) {
     })
 }
 
+function porcentagemConfirmadosUltimoJogo(req, res){
+    
+    jogosModel.porcentagemConfirmadosUltimoJogo()
+    .then(function(dados) {
+    if (dados.length > 0) {
+                res.status(200).json(dados);
+            } 
+        })
+        .catch(
+            function (erro) {
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+
+
 
 
 module.exports = {
-    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa
+    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa,porcentagemConfirmadosUltimoJogo
 }

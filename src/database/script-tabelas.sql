@@ -97,13 +97,21 @@ use febreamarela;
 
 select * from socios;
 
--- conta quantos socios existem
+
 
 
 
 
 -- Jogo mais próximo
 
+create view jogo_mais_proximo as
+select *
+from jogos
+where data_jogo >= CURRENT_DATE
+order by data_jogo
+LIMIT 1;
+
+-- Ultimo jogo 
 create view jogo_mais_proximo as
 select *
 from jogos
@@ -137,12 +145,19 @@ select * from confirmados;
 
 
 
-use febreamarela;
+
 
 select * from jogos;
 
 -- select que verifica quantos jogos o socio foi
 select count(id_socio) from confirmados where id_socio=1 and date(data_confirmacao) < current_date();
+
+-- select que verifica a qtd de socios + qtd que foi no ultimo jogo
+select count(s.id) as qtdSocios,count(c.id_socio) as qtdUltimoJogo from socios s 
+inner join confirmados c on s.id=c.id_socio
+   where c.data_confirmacao < current_date ;
+   
+   
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

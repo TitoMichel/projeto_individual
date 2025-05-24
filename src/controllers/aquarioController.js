@@ -27,7 +27,7 @@ function confirmar(req, res) {
       ).catch((erro) => {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          "Houve um erro ao realizar o cadastro! Erro: ",
           erro.sqlMessage
         );
         res.status(500).json(erro.sqlMessage);

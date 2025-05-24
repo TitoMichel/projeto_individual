@@ -61,9 +61,7 @@
             setInterval(sumirMensagem, 5000)
         }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
+       
         fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
@@ -90,8 +88,7 @@
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    }, 1000); 
                 });
 
             } else {

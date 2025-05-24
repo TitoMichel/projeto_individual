@@ -25,7 +25,9 @@ router.post("/jogosPorPessoa", function (req, res) {
   jogosController.jogosPorPessoa(req, res);
 });
 
-
+router.get("/porcentagemConfirmadosUltimoJogo",function(req,res){
+  jogosController.porcentagemConfirmadosUltimoJogo(req,res)
+})
 
 
 

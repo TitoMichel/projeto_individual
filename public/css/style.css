@@ -518,32 +518,6 @@ main .container {
     color: yellow;
 }
 
-.containerCadastro {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* ANIMAÇÃO DO CARD (FORMULÁRIO) */
-.containerLogin {
-    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-}
-
-/* ANIMAÇÃO DOS CAMPOS DO FORMULÁRIO */
-.campoLogin {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slideUp 0.5s ease-out forwards;
-}
-
-/* DELAYS PROGRESSIVOS PARA OS CAMPOS */
-.campoLogin:nth-child(1) {
-    animation-delay: 0.4s;
-}
-
-.campoLogin:nth-child(2) {
-    animation-delay: 0.5s;
-}
 
 
 
@@ -562,14 +536,13 @@ main .container {
     background-size: cover;
 }
 
-/* CONTAINER PRINCIPAL */
+
 .containerCadastro {
     width: 100%;
     max-width: 500px;
     padding: 20px;
 }
 
-/* CARD DO FORMULÁRIO */
 .boxCadastro {
     background-color: rgba(22, 22, 22, 0.822);
     border-radius: 10px;
@@ -577,7 +550,7 @@ main .container {
     padding: 30px;
 }
 
-/* TÍTULO */
+
 .tituloCadastro {
     color: yellow;
     text-align: center;
@@ -585,18 +558,18 @@ main .container {
     font-size: 28px;
 }
 
-/* FORMULÁRIO */
-.formCadastro {
+
+.formularioCadastro {
+    gap: 21px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
-/* GRUPO DE CAMPOS */
-.campoCadastro {
+
+.classeCadastro {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 9px;
 }
 
 .labelCadastro {
@@ -619,7 +592,7 @@ main .container {
     box-shadow: 0 0 0 3px rgba(196, 183, 7, 0.747);
 }
 
-/* BOTÃO */
+
 .botaoCadastro {
     background-color: yellow;
     color: rgb(0, 0, 0);
@@ -662,76 +635,6 @@ main .container {
 
 
 
-/* Animaçoes de entrada: */
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.containerCadastro {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-
-.boxCadastro {
-    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    animation-delay: 0.2s;
-    /* Delay para efeito cascata */
-    opacity: 0;
-    /* Inicia invisível */
-}
-
-
-.campoCadastro {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slideUp 0.5s ease-out forwards;
-}
-
-
-.campoCadastro:nth-child(1) {
-    animation-delay: 0.4s;
-}
-
-.campoCadastro:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.campoCadastro:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-.campoCadastro:nth-child(4) {
-    animation-delay: 0.7s;
-}
-
-
-.botaoCadastro {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: 0.9s;
-}
-
 
 .inputCadastro:focus {
     transform: scale(1.02);
@@ -741,7 +644,7 @@ main .container {
 .botaoCadastro:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(202, 219, 52, 0.3);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease ease-in-out;
 }
 
 

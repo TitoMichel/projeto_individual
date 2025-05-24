@@ -46,6 +46,16 @@ and id_jogo = (select id_jogo from jogo_mais_proximo);`;
 
 }
 
+function porcentagemConfirmadosUltimoJogo(){
+     var instrucaoSql = `  select count(s.id) as qtdSocios,count(c.id_socio) as qtdUltimoJogo from socios s 
+inner join confirmados c on s.id=c.id_socio
+   where c.data_confirmacao < current_date;
+`;
+
+ console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    proximoJogo,confirmar,verificar,cancelar,jogosPorPessoa
+    proximoJogo,confirmar,verificar,cancelar,jogosPorPessoa,porcentagemConfirmadosUltimoJogo
 }

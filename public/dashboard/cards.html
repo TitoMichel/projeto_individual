@@ -10,10 +10,10 @@
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+ 
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
+   
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -34,19 +34,17 @@
             </div>
            
 
-            <div class="btn-nav">
-                <h3>Aquários</h3>
-            </div>
+          
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                    <h3>Portal Transparência</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                <a href="../index.html">
+                    <h3>Home</h3>
                 </a>
             </div>
 
@@ -57,37 +55,18 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
+            <div class="containerPresenca">
+                <h2>Confirme sua presença no próximo jogo!</h2>
+                <div id="proximo_jogo"> </div>
+                <div class="botoesPresenca">
+                    <button class="botaoConfirmar" onclick="confirmarPresenca()">Confirmar Presença</button>
+                    <button class="botaoCancelar" onclick="cancelarPresenca()">Cancelar Presença</button>
                 </div>
+                <div id="confirmado"></div>
+            </div>
             </div>
 
-            <div class="cards" id="cardAquarios">
+            
 
             </div>
 
@@ -99,23 +78,115 @@
 
 <script>
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
+       function recarregar() {
+        location.reload();
     }
+
+     window.onload = () => {
+        jogoMaisProximo();
+        verificar();
+        validarSessao();
+       
+    };
+
+      function jogoMaisProximo() {
+        fetch('/jogos/proximoJogo', { cache: 'no-store' }) // O fetch faz a requsição aqui
+            .then(response => response.json()) // converte a resposta em json
+            .then(dados => { // recebe os dados da Api
+
+
+                const jogo = dados[0];
+
+                // formatando data e hora para formato certo se não ele vem todo errado por conta do json ex: T22:00:00.000Z
+                const dataHora = new Date(jogo.data_jogo);
+                document.getElementById('proximo_jogo').innerHTML = `
+                <p>Data: ${dataHora.toLocaleDateString('pt-BR')} ás ${dataHora.toLocaleTimeString('pt-BR')}</p>
+                <p>Local: ${jogo.local}</p>
+                <p>São Bernardo x ${jogo.adversario}</p>
+                <p>Rodada: ${jogo.rodada}</p>
+                <p>Campeonato: ${jogo.campeonato}</p>`
+            })
+            .catch(erro => {
+                console.error('Erro ao buscar o Proximo Jogo:', erro);
+            });
+    }
+
+    function confirmarPresenca() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/confirmar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+            .then(res => {
+                if (res.ok) { // se a requisição for bem sucedida
+                    document.getElementById('confirmado').innerHTML = "Presença confirmada!";
+                    document.querySelector('.botaoConfirmar').style.opacity = '0.5'; // como usei classe tenho q usar o query selector
+                } else {
+                    document.getElementById('confirmado').innerHTML = "Erro ao confirmar presença.";
+                }
+            })
+            .catch(() => {
+                document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+            });
+
+        setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
+    }
+
+    function cancelarPresenca() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/cancelar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+            .then(res => {
+                if (res.ok) {
+                    document.getElementById('confirmado').innerHTML = "Presença Cancelada!";
+                    document.querySelector('.botaoCancelar').style.opacity = '0.5';
+                } else {
+                    document.getElementById('confirmado').innerHTML = "Erro ao cancelar presença.";
+                }
+            })
+            .catch(() => {
+                document.getElementById('confirmado').innerHTML = "Erro no cancelamento.";
+            });
+
+        setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
+    }
+
+    function verificar() {
+        const idSocio = sessionStorage.ID_USUARIO;
+
+        fetch('/jogos/verificar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_socio: idSocio })
+        })
+
+            .then(resposta => resposta.json())
+            .then(dados => {
+                console.log('Resposta da API:', dados); // veja o que está vindo aqui
+                if (dados.quantidade > 0) {
+                    document.getElementById('confirmado').innerHTML = "Presença confirmada!";
+                    document.querySelector('.botaoConfirmar').disabled = true;
+                    document.querySelector('.botaoConfirmar').style.opacity = '0.5';
+                    document.querySelector('.botaoCancelar').disabled = false;
+                } else {
+                    document.getElementById('confirmado').innerHTML = "Presença ainda não confirmada.";
+                    document.querySelector('.botaoConfirmar').disabled = false;
+                    document.querySelector('.botaoCancelar').disabled = true;
+                    document.querySelector('.botaoCancelar').style.opacity = '0.5';
+                }
+            })
+            .catch(() => {
+                document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+            });
+    }
+
+    
 
 </script>
 

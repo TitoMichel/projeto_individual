@@ -24,7 +24,7 @@ body {
 
 
 .dash {
-  width: 100%;
+  width: 1000%;
   position: relative;
   top: 0;
   left: 10%;
@@ -141,7 +141,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: #c4e600;
   background-color: white;
   margin: 5px;
   border-radius: 3px;
@@ -150,11 +150,11 @@ body {
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: #cfe600;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #cfe600;
   background-color: white;
 
 }
@@ -247,15 +247,16 @@ canvas {
 
 .btn-nav-white {
   width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
+  background-color: #202020;
+  border: 3px solid yellow;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
+  margin-top: -120px;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: yellow;
   padding: 0;
   margin: 0;
 }
@@ -270,13 +271,14 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: rgb(151, 91, 91);
   color: white;
   border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+  border: solid 3px rgb(190, 41, 41);
 }
 
 #contadorSocios {
@@ -366,7 +368,7 @@ gap: 30px;
 .containerPresenca{
   background-color: yellow;
   color: #202020;
-  margin-top: 20px;
+  margin-top: 100px;
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -403,4 +405,11 @@ gap: 30px;
   font-size: 17px;
   margin-left: 70%;
   margin-top: -15px;
+}
+
+
+
+#grafico-pizza{
+  transform: scale(0.8);
+  margin-top: 40px;
 }
