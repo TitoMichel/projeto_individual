@@ -22,10 +22,10 @@ CREATE TABLE jogos (
     id_jogo INT AUTO_INCREMENT PRIMARY KEY,
     adversario VARCHAR(50) NOT NULL,
     data_jogo DATETIME NOT NULL,
-    local VARCHAR(100) NOT NULL,
-    rodada VARCHAR(20),
-    estadio VARCHAR(50),
-    campeonato VARCHAR(30) DEFAULT 'Série C'
+    local varchar(100) NOT NULL,
+    rodada varchar(30),
+    estadio VARCHAR(60),
+    campeonato varchar(50) default 'Série C'
 );
 
 INSERT INTO jogos (adversario, data_jogo, local, rodada, estadio, campeonato) 
@@ -84,22 +84,18 @@ VALUES ('Náutico', '2025-08-23 19:00:00', 'São Bernardo do Campo', '18ª Rodad
 
 
 CREATE TABLE confirmados (
-id_confirmacao INT AUTO_INCREMENT PRIMARY KEY,
-id_socio INT NOT NULL,
-id_jogo INT NOT NULL,
-data_confirmacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (id_socio) REFERENCES socios(id),
-FOREIGN KEY (id_jogo) REFERENCES jogos(id_jogo),
-UNIQUE KEY (id_socio, id_jogo) 
+id_confirmacao int auto_increment primary key,
+id_socio int not null,
+id_jogo int not null,
+data_confirmacao timestamp default current_timestamp,
+foreign key  (id_socio) references socios(id),
+foreign key (id_jogo) references jogos(id_jogo),
+unique key (id_socio, id_jogo) 
 );
 
 use febreamarela;
 
 select * from socios;
-
-
-
-
 
 
 -- Jogo mais próximo
@@ -111,13 +107,6 @@ where data_jogo >= CURRENT_DATE
 order by data_jogo
 LIMIT 1;
 
--- Ultimo jogo 
-create view jogo_mais_proximo as
-select *
-from jogos
-where data_jogo >= CURRENT_DATE
-order by data_jogo
-LIMIT 1;
 
 select * from jogo_mais_proximo;
 
@@ -126,11 +115,13 @@ select * from jogo_mais_proximo;
 insert into confirmados (id_socio,id_jogo) values
  (1,(select id_jogo from jogo_mais_proximo));
  
- 
+ -- comando que verifica se o usuario esta confirmado no proximo jogo
     select count(*) as  qtd
     from  confirmados
     where  id_socio = 1 and id_jogo = (SELECT id_jogo FROM jogo_mais_proximo);
   
+select * from confirmados;
+
 
 
 -- deleta do jogo mais próximo
@@ -138,26 +129,24 @@ delete from confirmados
 where id_socio = 1
 and id_jogo = (select id_jogo from jogo_mais_proximo);
 
-select * from socios;
-select * from jogos;
 
-select * from confirmados;
-
-
-
-
-
-select * from jogos;
 
 -- select que verifica quantos jogos o socio foi
 select count(id_socio) from confirmados where id_socio=1 and date(data_confirmacao) < current_date();
 
 -- select que verifica a qtd de socios + qtd que foi no ultimo jogo
-select count(s.id) as qtdSocios,count(c.id_socio) as qtdUltimoJogo from socios s 
-inner join confirmados c on s.id=c.id_socio
-   where c.data_confirmacao < current_date ;
-   
-   
+select (select count(*) from socios) as qtd_socios,
+    count(c.id_socio) as qtd_ultimo_jogo
+from confirmados c
+where c.id_jogo = (
+    select id_jogo 
+    from confirmados 
+    order by data_confirmacao desc 
+    limit 1
+);
+
+
+
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

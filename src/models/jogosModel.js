@@ -46,10 +46,17 @@ and id_jogo = (select id_jogo from jogo_mais_proximo);`;
 
 }
 
+// select do gráfico,usando subquerie para contar os socios e quantos foram no último jogo
 function porcentagemConfirmadosUltimoJogo(){
-     var instrucaoSql = `  select count(s.id) as qtdSocios,count(c.id_socio) as qtdUltimoJogo from socios s 
-inner join confirmados c on s.id=c.id_socio
-   where c.data_confirmacao < current_date;
+     var instrucaoSql = ` select (select count(*) from socios) as qtdSocios,
+    count(c.id_socio) as qtdUltimoJogo
+from confirmados c
+where c.id_jogo = (
+    select id_jogo 
+    from confirmados 
+    order by data_confirmacao desc 
+    limit 1
+);
 `;
 
  console.log("Executando a instrução SQL: \n" + instrucaoSql);
