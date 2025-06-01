@@ -29,6 +29,10 @@ router.get("/porcentagemConfirmadosUltimoJogo",function(req,res){
   jogosController.porcentagemConfirmadosUltimoJogo(req,res)
 })
 
+router.get("/ultimos3Jogos", function (req, res) {
+  jogosController.ultimos3Jogos(req, res);
+});
+
 
 
 module.exports = router;

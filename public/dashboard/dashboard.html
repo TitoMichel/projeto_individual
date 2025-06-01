@@ -18,10 +18,10 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  
+
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
@@ -29,7 +29,7 @@
 
 <body>
 
-    <div class="janela">
+    
         <div class="header-left">
             <h1>Febre Amarela</h1>
 
@@ -44,13 +44,13 @@
                 </a>
             </div>
 
-        
+
 
 
 
             <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                <a href="../index.html">
+                    <h3>Home</h3>
                 </a>
             </div>
 
@@ -72,24 +72,25 @@
 
                     <div id="contadorSocios">
                         <h2>Você já foi em:</h2>
-                        <span id="totaljogosquefui">0 </span> <h3 class="jogosquefui">jogos</h3>
-                        
+                        <span id="totaljogosquefui">0 </span>
+                        <h3 class="jogosquefui">jogos</h3>
+
                     </div>
                 </div>
 
-
-                <div class="graficos">
-                    <h2>Porcentagem de sócios que foram ao último jogo</h2>
-                    <canvas id="grafico-pizza">
-
-                    </canvas></div>
-                
+                <div id="graficosContainer">
+                    <div class="graficos">
+                        <div id="pizza"> <h2>Porcentagem de sócios que foram ao último jogo</h2> <canvas id="grafico-pizza"></canvas> </div>
+                        <div id="barras"> <canvas id="grafico-barras"></canvas> </div>
+                       
+                    </div>
+                </div>
             </div>
-           
+
 
 
         </div>
-    </div>
+    
 
 
 </body>
@@ -105,72 +106,145 @@
 
 
 
-    
+
     function recarregar() {
         location.reload();
     }
 
+    let qtdUltimos3Jogos = []
+    function ultimos3Jogos() {
+        //Coletando a qtd no ultimo jogo
+        fetch("/jogos/ultimos3Jogos")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                qtdUltimos3Jogos = data;
+                console.log(qtdUltimos3Jogos);
 
-    function qtdUltimoJogo() {
-    //Coletando a qtd no ultimo jogo
-    fetch("/jogos/porcentagemConfirmadosUltimoJogo")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            dados = data;
-            console.log(dados);
-            
-            gerarGraficoPizza();
-        })
-        .catch(function (err) {
-            console.log(err);
-        })
-}
+                gerarGraficoBarra();
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    }
 
-function gerarGraficoPizza() {
+    function gerarGraficoBarra() {
+        let sociosGrafico = []
+        let adversarios = []
+        for (let i = 0; i < qtdUltimos3Jogos.length; i++) {
+            sociosGrafico.push(qtdUltimos3Jogos[i].qtdPresente)
+            adversarios.push(`São Bernardo vs ${qtdUltimos3Jogos[i].adversario}`)
+        }
 
-      let qtdFoi = Number(dados[0].qtdUltimoJogo)  ;
-    let qtdNaoFoi =  Number(dados[0].qtdSocios - qtdFoi) ;
-  
-    
-    console.log(qtdFoi,qtdNaoFoi)
+        console.log(sociosGrafico, adversarios);
 
-    const ctx = document.getElementById('grafico-pizza');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [`Foram`,`Não foram`],
-            datasets: [{
-                data: [qtdFoi,qtdNaoFoi],
-                borderWidth: 1,
-                backgroundColor: [
-                    'yellow',
-                    'black',
-                   
-                ],
-                borderColor: 'yellow',
-                hoverOffset: 10
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        font: {
-                            size: 20
-                        },
-                        color: 'white'
+        const ctx = document.getElementById('grafico-barras');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:  adversarios,
+                datasets: [{
+                    label: 'Presentes nos últimos 3 jogos',
+                    data: sociosGrafico,
+                    borderWidth: 1,
+                    backgroundColor: 'yellow',
+                    borderRadius: 0
+                }]
+            },
+            options: {
+                indexAxis: 'x',
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 20,
+                                family: 'Poppins'
+                            },
+                            color: 'white'
+                        }
+                    }
+                },
+                plugins: {
+                    
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 30,
+                                family: 'Poppins'
+                            },
+                            color: 'white'
+                        }
                     }
                 }
             }
-        }
-    });
-}
+        });
+    }
 
 
-   
+    function qtdUltimoJogo() {
+        //Coletando a qtd no ultimo jogo
+        fetch("/jogos/porcentagemConfirmadosUltimoJogo")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                dados = data;
+                console.log(dados);
+
+                gerarGraficoPizza();
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    }
+
+    function gerarGraficoPizza() {
+
+        let qtdFoi = Number(dados[0].qtdUltimoJogo);
+        let qtdNaoFoi = Number(dados[0].qtdSocios - qtdFoi);
+
+
+        console.log(qtdFoi, qtdNaoFoi)
+
+        const ctx = document.getElementById('grafico-pizza');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [`Foram`, `Não foram`],
+                datasets: [{
+                    data: [qtdFoi, qtdNaoFoi],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'yellow',
+                        'black',
+
+                    ],
+                    borderColor: 'yellow',
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 20
+                            },
+                            color: 'white'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+
+
 
     function atualizarContadorSocios() {
         fetch('/aquarios/qtdSocios', { cache: 'no-store' })
@@ -186,35 +260,34 @@ function gerarGraficoPizza() {
 
     window.onload = () => {
         atualizarContadorSocios();
-        jogoMaisProximo();
-        verificar();
         validarSessao();
         jogosPorPessoa();
         qtdUltimoJogo();
+        ultimos3Jogos();
     };
 
 
-    function jogoMaisProximo() {
-        fetch('/jogos/proximoJogo', { cache: 'no-store' }) // O fetch faz a requsição aqui
-            .then(response => response.json()) // converte a resposta em json
-            .then(dados => { // recebe os dados da Api
+    // function jogoMaisProximo() {
+    //     fetch('/jogos/proximoJogo', { cache: 'no-store' }) // O fetch faz a requsição aqui
+    //         .then(response => response.json()) // converte a resposta em json
+    //         .then(dados => { // recebe os dados da Api
 
 
-                const jogo = dados[0];
+    //             const jogo = dados[0];
 
-                // formatando data e hora para formato certo se não ele vem todo errado por conta do json ex: T22:00:00.000Z
-                const dataHora = new Date(jogo.data_jogo);
-                document.getElementById('proximo_jogo').innerHTML = `
-                <p>Data: ${dataHora.toLocaleDateString('pt-BR')} ás ${dataHora.toLocaleTimeString('pt-BR')}</p>
-                <p>Local: ${jogo.local}</p>
-                <p>São Bernardo x ${jogo.adversario}</p>
-                <p>Rodada: ${jogo.rodada}</p>
-                <p>Campeonato: ${jogo.campeonato}</p>`
-            })
-            .catch(erro => {
-                console.error('Erro ao buscar o Proximo Jogo:', erro);
-            });
-    }
+    //             // formatando data e hora para formato certo se não ele vem todo errado por conta do json ex: T22:00:00.000Z
+    //             const dataHora = new Date(jogo.data_jogo);
+    //             document.getElementById('proximo_jogo').innerHTML = `
+    //             <p>Data: ${dataHora.toLocaleDateString('pt-BR')} ás ${dataHora.toLocaleTimeString('pt-BR')}</p>
+    //             <p>Local: ${jogo.local}</p>
+    //             <p>São Bernardo x ${jogo.adversario}</p>
+    //             <p>Rodada: ${jogo.rodada}</p>
+    //             <p>Campeonato: ${jogo.campeonato}</p>`
+    //         })
+    //         .catch(erro => {
+    //             console.error('Erro ao buscar o Proximo Jogo:', erro);
+    //         });
+    // }
 
     // function confirmarPresenca() {
     //     const idSocio = sessionStorage.ID_USUARIO;
@@ -262,34 +335,34 @@ function gerarGraficoPizza() {
     //     setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
     // }
 
-    function verificar() {
-        const idSocio = sessionStorage.ID_USUARIO;
+    // function verificar() {
+    //     const idSocio = sessionStorage.ID_USUARIO;
 
-        fetch('/jogos/verificar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id_socio: idSocio })
-        })
+    //     fetch('/jogos/verificar', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ id_socio: idSocio })
+    //     })
 
-            .then(resposta => resposta.json())
-            .then(dados => {
-                console.log('Resposta da API:', dados); // veja o que está vindo aqui
-                if (dados.quantidade > 0) {
-                    document.getElementById('confirmado').innerHTML = "Presença confirmada!";
-                    document.querySelector('.botaoConfirmar').disabled = true;
-                    document.querySelector('.botaoConfirmar').style.opacity = '0.5';
-                    document.querySelector('.botaoCancelar').disabled = false;
-                } else {
-                    document.getElementById('confirmado').innerHTML = "Presença ainda não confirmada.";
-                    document.querySelector('.botaoConfirmar').disabled = false;
-                    document.querySelector('.botaoCancelar').disabled = true;
-                    document.querySelector('.botaoCancelar').style.opacity = '0.5';
-                }
-            })
-            .catch(() => {
-                document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
-            });
-    }
+    //         .then(resposta => resposta.json())
+    //         .then(dados => {
+    //             console.log('Resposta da API:', dados); // veja o que está vindo aqui
+    //             if (dados.quantidade > 0) {
+    //                 document.getElementById('confirmado').innerHTML = "Presença confirmada!";
+    //                 document.querySelector('.botaoConfirmar').disabled = true;
+    //                 document.querySelector('.botaoConfirmar').style.opacity = '0.5';
+    //                 document.querySelector('.botaoCancelar').disabled = false;
+    //             } else {
+    //                 document.getElementById('confirmado').innerHTML = "Presença ainda não confirmada.";
+    //                 document.querySelector('.botaoConfirmar').disabled = false;
+    //                 document.querySelector('.botaoCancelar').disabled = true;
+    //                 document.querySelector('.botaoCancelar').style.opacity = '0.5';
+    //             }
+    //         })
+    //         .catch(() => {
+    //             document.getElementById('confirmado').innerHTML = "Erro na confirmação.";
+    //         });
+    // }
 
 
     function jogosPorPessoa() {

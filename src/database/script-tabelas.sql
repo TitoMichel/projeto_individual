@@ -135,18 +135,30 @@ and id_jogo = (select id_jogo from jogo_mais_proximo);
 select count(id_socio) from confirmados where id_socio=1 and date(data_confirmacao) < current_date();
 
 -- select que verifica a qtd de socios + qtd que foi no ultimo jogo
-select (select count(*) from socios) as qtd_socios,
-    count(c.id_socio) as qtd_ultimo_jogo
-from confirmados c
-where c.id_jogo = (
-    select id_jogo 
-    from confirmados 
-    order by data_confirmacao desc 
-    limit 1
-);
+create or replace view ultimos_3_jogos
+ as
+ select  id_jogo
+    from  jogos
+    where data_jogo < current_date()
+    order by data_jogo desc
+    limit 3;
+    -- tive q criar essa view pois não consegui usar limit com subquery.
+    
+select j.adversario, count(c.id_socio) as  qtdUltimos3jogos
+from confirmados c 
+inner join jogos j on j.id_jogo=c.id_jogo
+where c.id_jogo  in (
+   select * from ultimos_3_jogos
+) group by j.id_jogo,j.adversario; 
+
+select * from jogos;
+select * from ultimos_3_jogos;
+select * from jogos;
+select * from confirmados;
 
 
 
 
+    
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

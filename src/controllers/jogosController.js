@@ -70,10 +70,18 @@ function porcentagemConfirmadosUltimoJogo(req, res){
 
 }
 
+function ultimos3Jogos(req, res) {
+    jogosModel.ultimos3Jogos().then((resultado) => {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 
 
 
 module.exports = {
-    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa,porcentagemConfirmadosUltimoJogo
+    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa,porcentagemConfirmadosUltimoJogo,ultimos3Jogos
 }

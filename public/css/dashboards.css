@@ -15,27 +15,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   overflow-x: hidden;
-   
+ 
+   display: flex;
+   flex-direction: column;
 }
 
 /* pagina graficos */
 
 
 
-.dash {
-  width: 1000%;
-  position: relative;
-  top: 0;
-  left: 10%;
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-   background-color: #212124;
-}
+
 
 
 
@@ -51,23 +40,9 @@ body {
   color: white;
 }
 
-.card-aquario {
-  margin: 2%;
-  min-width: 40%;
-  max-width: 50%;
-  width: fit-content;
-  flex-wrap: wrap;
-  display: flex;
-  /* text-align: center; */
-  height: 180px;
-  /* justify-content: right; */
-  background-color: #212124;
-  font-size: 20px;
-}
 
-.card-aquario h1 {
-  width: fit-content;
-}
+
+
 
 .card-aquario p {
   margin: 0;
@@ -119,15 +94,10 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
+
+  
 }
 
-.graph {
-  width: 70%;
-  margin: auto;
-  padding-top: 10px;
-}
 
 .tituloGraficos {
   color: rgb(216, 216, 216);
@@ -175,17 +145,11 @@ body {
   display: block;
 }
 
-canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
+
 
 /* PAGINA DOS GRÁFICOS 2023 */
 
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
+
 
 .header-left a {
   text-decoration: none;
@@ -271,7 +235,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: rgb(151, 91, 91);
+  background-color: rgb(161, 26, 26);
   color: white;
   border-radius: 10px;
   text-align: center;
@@ -396,6 +360,9 @@ gap: 30px;
   display: flex;
   flex-direction: row;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 
@@ -409,12 +376,54 @@ gap: 30px;
 
 
 
-#grafico-pizza{
-  transform: scale(0.8);
-  margin-top: -40px;
+.dash {
+  width: 80%;
+  margin-left: 20%; 
+  min-height: 100vh;
+  background-color: #212124;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   
 }
+
+
+
 
 .graficos h2{
   color: yellow;
   margin-top: 50px;
+  text-align: center;
 }
+
+.graficos{
+   display: flex;               
+    flex-direction: row;         
+    flex-wrap: nowrap;           
+    justify-content: center;     
+    gap: 40px;                  
+    width: 100%;               
+  
+}
+
+ 
+#grafico-barras {
+  width: 800px !important;
+  height: 500px !important;
+}
+
+#grafico-pizza
+ {
+  
+  width: 80% !important;
+  height: 450px !important;
+  margin-top: 20px;
+}
+
+
+#grafico-barras{
+  margin-top: 40px;
+}
+
