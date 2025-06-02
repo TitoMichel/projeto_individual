@@ -117,7 +117,7 @@ main .container {
 .historia {
      width: 100vw;
     height: 460px;
-    background-image: linear-gradient(to bottom, transparent 0%, #000000e8 0%), url(https://territoriolivrefm.com.br/wp-content/uploads/2022/08/TL_Fm_Capa-1.png);
+    background-image: linear-gradient(to bottom, transparent 0%, #000000c5 0%), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR506RSE0lMNGgjs4TApgl0hSRioQ82vm9TBA&s);
     background-size: cover;
     display: flex;
     flex-direction: row;
