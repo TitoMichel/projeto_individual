@@ -11,7 +11,9 @@ function proximoJogo() {
 }
 
 function jogosPorPessoa(id_socio) {
-    var instrucaoSql = `select count(id_socio) as qtd from confirmados where id_socio=${id_socio} and date(data_confirmacao) < current_date();`;
+    var instrucaoSql = `select count(id_socio) as qtd from confirmados c inner join jogos j 
+    on j.id_jogo=c.id_jogo
+ where id_socio=${id_socio}  and date(j.data_jogo) < current_date();`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
