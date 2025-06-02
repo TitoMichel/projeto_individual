@@ -113,7 +113,7 @@
 
     let qtdUltimos3Jogos = []
     function ultimos3Jogos() {
-        //Coletando a qtd no ultimo jogo
+        
         fetch("/jogos/ultimos3Jogos")
             .then(function (response) {
                 return response.json();
@@ -248,7 +248,7 @@
 
 
     function atualizarContadorSocios() {
-        fetch('/aquarios/qtdSocios', { cache: 'no-store' })
+        fetch('/socios/qtdSocios', { cache: 'no-store' })
             .then(response => response.json())
             .then(dados => {
                 const total = dados.quantidade || 0;
