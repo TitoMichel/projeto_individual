@@ -81,7 +81,7 @@
                 <div id="graficosContainer">
                     <div class="graficos">
                         <div id="pizza"> <h2>Porcentagem de sócios que foram ao último jogo</h2> <canvas id="grafico-pizza"></canvas> </div>
-                        <div id="barras"> <canvas id="grafico-barras"></canvas> </div>
+                        <div id="barras"> <h2>Quantidade de sócios presentes nos últimos 3 jogos</h2> <canvas id="grafico-barras"></canvas> </div>
                        
                     </div>
                 </div>
@@ -171,6 +171,7 @@
                 plugins: {
                     
                     legend: {
+                        display: false,
                         labels: {
                             font: {
                                 size: 30,
@@ -220,7 +221,7 @@
                     borderWidth: 1,
                     backgroundColor: [
                         'yellow',
-                        'black',
+                        '#202020',
 
                     ],
                     borderColor: 'yellow',

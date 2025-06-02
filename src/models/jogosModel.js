@@ -54,9 +54,7 @@ function porcentagemConfirmadosUltimoJogo() {
 from confirmados c
 where c.id_jogo = (
     select id_jogo 
-    from confirmados 
-    order by data_confirmacao desc 
-    limit 1
+    from ultimo_jogo 
 );
 `;
 

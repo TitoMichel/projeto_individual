@@ -78,6 +78,9 @@ body {
     overflow-x: hidden;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 
 
@@ -150,7 +153,7 @@ main .container {
 
 /*------------------CARROSEL----------------- */
 
-.carrosel {
+.imgFebre {
     background-color: yellow;
     height: 75%;
     width: 500px;
@@ -159,64 +162,9 @@ main .container {
     border: solid 4px rgb(163, 167, 101);
     position: relative;
     border-radius: 10px;
-}
-
-.slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    margin-top: -20px;
-}
-
-.slide {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: none;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
+    background-image: url(../Imgs/tigre.png);
+    background-size: cover;
     object-fit: cover;
-}
-
-.navigation {
-    width: 100%;
-    height: 50px;
-    position: relative;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navigation label {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    margin: 10px;
-    cursor: pointer;
-}
-
-
-#slide1:checked~.slides .slide:nth-child(1),
-#slide2:checked~.slides .slide:nth-child(2),
-#slide3:checked~.slides .slide:nth-child(3) {
-    display: block;
-}
-
-
-#slide1:checked~.navigation .selecionado:nth-child(1) {
-    background-color: yellow;
-}
-
-#slide2:checked~.navigation .selecionado:nth-child(2) {
-    background-color: yellow;
-}
-
-#slide3:checked~.navigation .selecionado:nth-child(3) {
-    background-color: yellow;
 }
 
 
@@ -276,18 +224,8 @@ main .container {
 }
 /* -------- seja Socio------- */
 
-.artigos h1 {
-    color: rgb(15, 15, 15);
-    font-size: 90px;
-}
 
-.artigos H3 {
-    color: #313131;
-    font-size: 50px;
-    margin-top: -20px;
-}
-
-.artigos {
+#artigos {
     height: 100vh;
     text-align: center;
     border-bottom: 2px solid rgb(0, 0, 0);
@@ -297,7 +235,19 @@ main .container {
     flex-direction: column;
 }
 
-.sejasocio {
+#artigos h1 {
+    color: rgb(44, 44, 44);
+    font-size: 90px;
+}
+
+#artigos H3 {
+    color: #313131;
+    font-size: 50px;
+    margin-top: -20px;
+}
+
+
+#artigos .sejasocio {
     margin-top: -20px;
     display: flex;
     justify-items: center;
@@ -307,7 +257,7 @@ main .container {
     justify-content: center;
 }
 
-.vantagens {
+ #artigos .vantagens {
     background-color: yellow;
     width: 500px;
     height: 550px;
@@ -322,7 +272,7 @@ main .container {
 
 
 
-.vantagens h2 {
+#artigos .vantagens h2 {
     color: #1d1c1c;
     margin-top: 69px;
     font-size: 75px;
@@ -330,7 +280,7 @@ main .container {
 }
 
 
-.vantagens h1 {
+ #artigos .vantagens h1 {
     color: black;
     margin-top: 10px;
     font-size: 70px;
@@ -345,7 +295,7 @@ main .container {
 
 
 
-.sejasocio img {
+  .sejasocio img {
     margin-top: 0px;
     border: solid 1px #1d1c1c;
     height: 550px;
@@ -354,7 +304,7 @@ main .container {
 
 }
 
-.vantagem {
+ #artigos .vantagem {
     display: flex;
     flex-direction: row;
     width: 450px;
