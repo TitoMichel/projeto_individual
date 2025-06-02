@@ -83,5 +83,11 @@ function ultimos3Jogos(req, res) {
 
 
 module.exports = {
-    proximoJogo, confirmar, verificar,cancelar,jogosPorPessoa,porcentagemConfirmadosUltimoJogo,ultimos3Jogos
+    proximoJogo,
+    confirmar, 
+    verificar,
+    cancelar,
+    jogosPorPessoa,
+    porcentagemConfirmadosUltimoJogo,
+    ultimos3Jogos
 }

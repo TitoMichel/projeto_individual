@@ -84,5 +84,11 @@ function ultimos3Jogos() {
 }
 
 module.exports = {
-    proximoJogo, confirmar, verificar, cancelar, jogosPorPessoa, porcentagemConfirmadosUltimoJogo, ultimos3Jogos
+    proximoJogo,
+    confirmar,
+    verificar,
+    cancelar,
+    jogosPorPessoa, 
+    porcentagemConfirmadosUltimoJogo, 
+    ultimos3Jogos
 }
