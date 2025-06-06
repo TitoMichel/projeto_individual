@@ -1,6 +1,11 @@
+// animação escrevendo
+// referência: https://pt.stackoverflow.com/questions/588931/anima%C3%A7%C3%A3o-de-texto-em-javascript-n%C3%A3o-funciona-corretamente
+
 var i =0;
 var txt1 = `Movimento Popular febre Amarela`
 var txt2 = `A Primeira barra brava do São Bernardo Futebol Clube. `
+
+// o método charAt serve para recuperar o caractere de uma determinada posição.
 
 var velocidade = 50;
 

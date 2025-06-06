@@ -159,6 +159,12 @@ INSERT INTO confirmados (id_socio, id_jogo) VALUES
 (10, 6);
 
 INSERT INTO confirmados (id_socio, id_jogo) VALUES
+(1, 11),
+(2, 11),
+(3, 11),
+(4, 11),
+(7, 11),
+(8, 11),
 (1, 10),
 (2, 10),
 (3, 10),
@@ -191,8 +197,8 @@ where data_jogo >= CURRENT_DATE
 order by data_jogo
 LIMIT 1;
 
-
-select * from jogo_mais_proximo;
+use febreamarela;
+select * from ultimo_jogo;
 
 
 -- dá um insert no jogo mais próximo
@@ -265,6 +271,18 @@ where id_socio=2  and date(j.data_jogo) < current_date();
 
 -- contas quantos foram no ultimo jogo
 select count(id_socio) from confirmados c where c.id_jogo = (select id_jogo from ultimo_jogo);
-    
+
+-- update 
+update jogos set data_jogo='2025-06-04' where id_jogo=11;
+
+select  (select count(*) from socios),
+count(id_socio) from confirmados where id_jogo=(select id_jogo from ultimo_jogo);
+
+
+
+
+insert into confirmados (id_socio,id_jogo) values
+ (1,(select id_jogo from jogo_mais_proximo));
+ 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 

@@ -107,9 +107,7 @@
 
 
 
-    function recarregar() {
-        location.reload();
-    }
+   
 
     let qtdUltimos3Jogos = []
     function ultimos3Jogos() {
@@ -277,7 +275,7 @@
             body: JSON.stringify({ id_socio: idSocio })
         })
             .then(response => response.json())
-            .then(dados => {
+            .then(function (dados)  {
                 const total = dados.quantidade || 0;
                 document.getElementById('totaljogosquefui').textContent = total;
             })

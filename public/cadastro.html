@@ -125,8 +125,7 @@
       return false;
 
       // Validando cpf
-    } else if ((cpfVar.length != 11 ||
-      !/^\d{11}$/.test(cpfVar))) {
+    } else if ((cpfVar.length != 11)) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "O CPF DEVE CONTER SOMENTE 11 NÚMEROS  ";
       finalizarAguardar();
@@ -139,7 +138,7 @@
       finalizarAguardar();
       return false;
 
-      // Validando confirmação de senhas
+      // Validando confirmação de senha
     } else if (senhaVar !== confirmacaoSenhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "As senhas devem ser iguais!  ";

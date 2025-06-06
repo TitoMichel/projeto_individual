@@ -92,7 +92,7 @@
       function jogoMaisProximo() {
         fetch('/jogos/proximoJogo', { cache: 'no-store' }) // O fetch faz a requsição aqui
             .then(response => response.json()) // converte a resposta em json
-            .then(dados => { // recebe os dados da Api
+            .then(function (dados)  { // recebe os dados da Api
 
 
                 const jogo = dados[0];
@@ -120,7 +120,7 @@
             body: JSON.stringify({ id_socio: idSocio })
         })
             .then(res => {
-                if (res.ok) { // se a requisição for bem sucedida
+                if (res.ok) { // se a requisição der certo
                     document.getElementById('confirmado').innerHTML = "Presença confirmada!";
                     document.querySelector('.botaoConfirmar').style.opacity = '0.5'; // como usei classe tenho q usar o query selector
                 } else {
@@ -142,7 +142,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id_socio: idSocio })
         })
-            .then(res => {
+            .then( function(res)   {
                 if (res.ok) {
                     document.getElementById('confirmado').innerHTML = "Presença Cancelada!";
                     document.querySelector('.botaoCancelar').style.opacity = '0.5';
@@ -150,9 +150,7 @@
                     document.getElementById('confirmado').innerHTML = "Erro ao cancelar presença.";
                 }
             })
-            .catch(() => {
-                document.getElementById('confirmado').innerHTML = "Erro no cancelamento.";
-            });
+            
 
         setTimeout(recarregar, 2000); // recarrega página para atualizar se ta confirmado ou n
     }
@@ -168,7 +166,7 @@
 
             .then(resposta => resposta.json())
             .then(dados => {
-                console.log('Resposta da API:', dados); // veja o que está vindo aqui
+                console.log('function verificar:', dados); 
                 if (dados.quantidade > 0) {
                     document.getElementById('confirmado').innerHTML = "Presença confirmada!";
                     document.querySelector('.botaoConfirmar').disabled = true;

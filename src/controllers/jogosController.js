@@ -9,7 +9,7 @@ function proximoJogo(req, res) {
 }
 
 function confirmar(req, res) {
-    const id_socio = req.body.id_socio; // recupera oi id do socio para mim conseguir inserir dps
+    const id_socio = req.body.id_socio; // recupera o id do socio para mim conseguir inserir dps
 
     jogosModel.confirmar(id_socio).then((resultado) => {
 
@@ -20,7 +20,7 @@ function confirmar(req, res) {
 }
 
 function cancelar(req, res) {
-    const id_socio = req.body.id_socio; // recupera oi id do socio para mim conseguir inserir dps
+    const id_socio = req.body.id_socio; // recupera o id do socio para mim conseguir inserir dps
 
     jogosModel.cancelar(id_socio).then((resultado) => { // id socio como parametro
 
@@ -31,7 +31,7 @@ function cancelar(req, res) {
 }
 
 function verificar(req, res) {
-    const id_socio = req.body.id_socio; // recupera o id do socio para mim conseguir inserir dps
+    const id_socio = req.body.id_socio; // recupera o id do socio para  conseguir inserir dps
     
     jogosModel.verificar(id_socio).then((resultado) => {
     var quantidade = resultado[0]['qtd']; // qtd é o nome do meu alias q ta no model
@@ -43,7 +43,7 @@ function verificar(req, res) {
 }
 
 function jogosPorPessoa(req, res) {
-    const id_socio = req.body.id_socio; // recupera o id do socio para mim conseguir inserir dps
+    const id_socio = req.body.id_socio; // recupera o id do socio para  conseguir inserir dps
     
     jogosModel.jogosPorPessoa(id_socio).then((resultado) => {
     var quantidade = resultado[0]['qtd']; // qtd é o nome do meu alias q ta no model
